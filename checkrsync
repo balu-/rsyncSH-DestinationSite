@@ -1,0 +1,34 @@
+#!/bin/sh
+
+case "$SSH_ORIGINAL_COMMAND" in
+*\&*)
+echo "Rejected"
+;;
+*\(*)
+echo "Rejected"
+;;
+*\{*)
+echo "Rejected"
+;;
+*\;*)
+echo "Rejected"
+;;
+*\<*)
+echo "Rejected"
+;;
+*\`*)
+echo "Rejected"
+;;
+*\|*)
+echo "Rejected"
+;;
+/usr/bin/rsync\ --server*)
+$SSH_ORIGINAL_COMMAND
+#/usr/local/bin/sudo /usr/local/bin/rsync 
+;;
+*)
+echo "Rejected"
+;;
+esac 
+
+#echo $SSH_ORIGINAL_COMMAND >> /media/data/backup/afk/command
